@@ -1,56 +1,66 @@
-<!DOCTYPE html>
 
+<!doctype html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <title>assignments | knockoff myfriends</title>
-    <link rel="shortcut icon" href="./logo.jpg"/>
-    <!--Metadata here-->
-  </head>
+<head>
+    <meta charset="utf-8">
+    <title>Depressing Table</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
 
-  <body> 
-    <h1 class="Major-Heading" id="Page-title">assignments</h1>
-    <ol type="1" class="nav" id="main-nav" >
-      <li><a href="./home.html">Home</a></li>
-      <li><a href="./schedule.html">Schedule</a></li>
-      <li><a href="./assignments.html">Assignments</a></li>
-    </ol>
-	<table id="assignment-center">
-      <tr>
-        <th>Class</th>
-        <th>Details</th>
-        <th>Due</th>
-        <th>Status</th>
-      </tr>
-	  <tr>
-        <td>TIDE</td>
-        <td class="details">HTML/CSS Project</td>
-        <td>2/14/2022<br/>12:59 PM</td>
-        <td id="overdue">Overdue</td>
-      </tr>
-	  <tr>
-        <td>French III - 1</th>
-        <td class="details">Le végétarisme</td>
-        <td>2/14/2022</td>
-        <td id="completed">Completed</td>
-      </tr>
-	  <tr>
-        <td>History of the Modern World</td>
-        <td class="details">Revolution Costs</td>
-        <td>2/14/2022</td>
-        <td id="in-progress">In Progress</td>
-      </tr>
-	</table>
-  </body>
-
-  <footer id="contacts">
-    <br/>
-    <br/>
-    <p>Contact Us!</p>
-    <button>Email</button>
-    <a href='https://discord.gg/UtZjhSRyF6' target="_blank"><button>Discord</button></a>
-    <br/>
-    <br/>
-  </footer>
+<body>
+    <div id="main-title">
+        <h1> Poverty in American School Districts</h1>
+        <p> <em> Brought to you by the US Census Bureau </em></p>
+    </div>
+    
+    <form id="search" onSubmit="myFunction()">
+        <lable for="search-column">In Column:</lable>
+        <select name="column" id="search-column">
+            <option value="state">State</option>
+            <option value="fips">State FIPS Code</option>
+            <option value="dist-id">District ID</option>
+            <!--Add remaining options-->
+        </select>
+        <lable for="searchfor">Search for </lable>
+        <input id="searchfor" type="text" />
+        <select name="scope" id="search-scope">
+            <option value="exact">Matches Exactly</option>
+            <option value="contains">Contains</option>
+            <option value="not-conains">Does Not Contain</option>
+        </select>
+    <input type="submit" id="submit-search" />
+    </form>
+  <table>
+      <thead>
+          <tr>
+              <th><a href="javascript:myFunction()">State</a></th>
+              <th>State FIPS Code</th>
+              <th>District ID</th>
+              <th>Name</th>
+              <th>Total Population</th>
+              <th>School-aged population (5-17)</th>
+              <th>School-aged children in poverty</th>
+              <th>Poverty Rate</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>AL</td>
+              <td>01</td>
+              <td>00190</td>
+              <td>Alabaster City School District</td>
+              <td>35,268</td>
+              <td>6,797</td>
+              <td>669</td>
+              <td>9.84%</td>
+          </tr>
+      </tbody>
+  </table>
+    
+</body>
+    <script>
+        function myFunction() {
+            window.alert("Fill in this code please!");
+        }
+    </script>
 </html>
-
