@@ -32,3 +32,15 @@ function generate_table() {
   // sets the border attribute of tbl to 2;
   tbl.setAttribute("border", "2");
 }
+
+function populateTable() {
+  var table = document.getElementById("myTable");
+  
+  var rowNode = document.createElement("tr");
+  var cellNode = document.createElement("td");
+  var textNode = document.createTextNode("John Doe");
+  
+  cellNode.appendChild(textNode);
+  rowNode.appendChild(cellNode);
+  table.appendChild(rowNode);
+}
