@@ -1,46 +1,28 @@
-function generate_table() {
-  // get the reference for the body
-  var body = document.getElementsByTagName("body")[0];
-
-  // creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-
-  // creating all cells
-  for (var i = 0; i < 2; i++) {
-    // creates a table row
-    var row = document.createElement("tr");
-
-    for (var j = 0; j < 2; j++) {
-      // Create a <td> element and a text node, make the text
-      // node the contents of the <td>, and put the <td> at
-      // the end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode("cell in row "+i+", column "+j);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
-  }
-
-  // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
-  // sets the border attribute of tbl to 2;
-  tbl.setAttribute("border", "2");
-}
-
 function populateTable() {
-  var table = document.getElementById("myTable");
-  
-  var rowNode = document.createElement("tr");
-  var cellNode = document.createElement("td");
-  var textNode = document.createTextNode("John Doe");
-  
-  cellNode.appendChild(textNode);
-  rowNode.appendChild(cellNode);
-  table.appendChild(rowNode);
+var playerList = [
+  {name: "player1", highScore: 1, ability: 8},
+  {name: "player2", highScore: 1, ability: 7},
+  {name: "player3", highScore: 1, ability: 6},
+  {name: "player4", highScore: 1, ability: 5},
+  {name: "player5", highScore: 1, ability: 4},
+  {name: "player6", highScore: 1, ability: 3},
+  {name: "player7", highScore: 1, ability: 2},
+  {name: "player8", highScore: 1, ability: 1}
+];
+
+for (var i = 0; i < playerList.length; i++) {
+  console.log(i);
+  var player = document.getElementById("player" + i + 1);
+  var playerscore = document.getElementById('player' + i + 1 + "score")
+  var progress=Math.random();
+  progress=11*progress;
+  progress=Math.floor(progress);
+  playerList[i].ability=playerList[i].ability+progress;
+  console.log(playerList[i])
+
+  //add players score to the table//
+
+  playerscore.innerText = playerList[i].ability;
+
+}
 }
