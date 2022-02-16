@@ -1,124 +1,31 @@
-*{
-	color: #F0EFEA;
-	font-family: 'Trebuchet MS';
-	background-color: #301B28;
-	font-size: 30px;
+@charset "utf-8";
+/* CSS Document */
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+thead {
+    background-color: blue;
+    color: white;
+    height: auto;
 }
 
-#Page-title{
-	color: #F0EFEA;
-	font-size: 100px;
-	text-align: center;
-	background-color: #A10115;
-	padding: 10px;
-	margin: 0px 10px 0px 10px;
+thead a {
+    color: white;
+    text-decoration: none;
 }
 
-#main-nav li {
-	display: inline-block;
-	font-size: 20px;
-	color: #F0EFEA;
-	margin: 40px;
+thead a:visited {
+    color: white;
+    text-decoration: none;
 }
 
-#main-nav {
-	position: sticky;
-	top: 0px;
-	text-align: center;
-	background-color:#A10115;
-	padding:0;
-	margin: 0px 10px 0px 10px;
+tbody {
+    text-align: center;
+    background-color: #C7D9FB
 }
 
-#main-nav li a:hover {
-	color:#C0B2B5;
-}
-
-#main-nav li a {
-	color: #F0EFEA;
-	text-decoration: none;
-	background-color:#A10115;
-}
-
-#campus-description{
-	margin: 10px;
-	padding-left: 10px;
-}
-
-#campus-description h2{
-	font-family: 'Courier New';
-	font-size: 50px;
-}
-
-#campus-description h2, p{
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-#campus-picture{
-	display: inline-block;
-	height: 40%;
-	width: 40%;
-	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-#contacts{
-	background: #C0B2B5;
-	margin: 10px;
-	padding-left: 10px;
-}
-
-#contacts p{
-	font-family: 'Courier New';
-	font-weight: bold;
-	background: #C0B2B5;
-	color: #A10115;
-}
-
-#contacts button{
-	display: inline-block;
-	background: #C0B2B5;
-	background-color: #F0EFEA;
-	color: #A10115;
-	padding: 10px;
-	border-radius: 5px;
-	font-size: 20px;
-	margin: 10px;
-	border: none;
-}
-
-#contacts a{
-	background: #C0B2B5;
-}
-
-#contacts button:hover {
-	background-color: #A10115;
-	color: #F0EFEA;
-}
-
-#schedule, #assignment-center {
-	border-collapse: collapse;
-	width: 98.5%;
-	margin: 20px 10px 20px 10px;
-}
-
-#schedule td, #schedule th {
-	border: 4px solid #301B28;
-}
-
-#schedule td{
-	padding: 12px;
-	background-color: white;
-	color: #301B28 ;
-}
-
-#schedule th {
-	padding: 15px;
-	text-align: left;
-	background-color: #D72C16;
-	color: #F0EFEA;
+tbody tr:hover {
+    background-color: lightcoral;
 }
