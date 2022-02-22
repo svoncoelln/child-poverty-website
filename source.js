@@ -11,6 +11,13 @@ function loadTableData(list) {
 let l = ["AL", "01", "00190", "Alabaster City School District", "35,268", "6,797", "669", "9.84%"];
 loadTableData(l);
 
+function search(item) {
+	for(let i = 0; i < list.length; i++) {
+		if (item = list[i])
+			return list[i];
+	}
+}
+
 /*
 function populateTable() {
 var playerList = [
