@@ -1,3 +1,17 @@
+
+function loadTableData(list) {
+	let table = document.getElementById("table-body");
+	let row = table.insertRow();
+	  
+	for(let i = 0; i < list.length; i++){
+		let x = row.insertCell(i);
+		x.innerHTML = list[i];
+	}
+}
+let l = ["AL", "01", "00190", "Alabaster City School District", "35,268", "6,797", "669", "9.84%"];
+loadTableData(l);
+
+/*
 function populateTable() {
 var playerList = [
   {name: "player1", highScore: 1, ability: 8},
@@ -26,21 +40,6 @@ for (var i = 0; i < playerList.length; i++) {
 
 }
 
-function loadTableData(list) {
-
-	//0: Date
-	//1: Name
-	let table = document.getElementById("table-body");
-	let row = table.insertRow();
-	  
-	for(let i = 0; i < list.length; i++){
-		let x = row.insertCell(i);
-		x.innerHTML = list[i];
-	}
-}
-let l = ["AL", "01", "00190", "Alabaster City School District", "35,268", "6,797", "669", "9.84%"];
-loadTableData(l);
-
 function tableCreate() {
   const body = document.body,
         tbl = document.createElement('table');
@@ -66,6 +65,5 @@ function tableCreate() {
 }
 
 tableCreate();
-=======
 }
->>>>>>> 1bed61b58a4f0edb4fe989cb9662e952829f14f2
+*/
