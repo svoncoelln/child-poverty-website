@@ -13,11 +13,19 @@
     </div>
     
     <form id="search" onSubmit="myFunction()">
-        <lable for="searchfor">Sort by </lable>
+        <lable for="search-column">In Column:</lable>
+        <select name="column" id="search-column">
+            <option value="state">State</option>
+            <option value="fips">State FIPS Code</option>
+            <option value="dist-id">District ID</option>
+            <!--Add remaining options-->
+        </select>
+        <lable for="searchfor">Search for </lable>
+        <input id="searchfor" type="text" />
         <select name="scope" id="search-scope">
-            <option value="alph">Alphabetical</option>
-            <option value="high-pov">Highest Poverty</option>
-            <option value="low-pov">Lowest Poverty</option>
+            <option value="exact">Matches Exactly</option>
+            <option value="contains">Contains</option>
+            <option value="not-conains">Does Not Contain</option>
         </select>
     <input type="submit" id="submit-search" />
     </form>
