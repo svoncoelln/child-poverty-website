@@ -29,7 +29,11 @@ loadTableData(l8);
 loadTableData(l9);
 loadTableData(l10);
 
+let myArray = [l, l2, l3, l4, l5, l6, l7, l8, l9, l10];
 
+function sortData(arr) {
+  arr.sort();
+}
 
 /*
 function populateTable() {
