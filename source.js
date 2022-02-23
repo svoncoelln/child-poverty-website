@@ -24,3 +24,16 @@ let data = [l, l2, l3, l4, l5, l6, l7, l8, l9, l10];
 for(let i = 0; i < data.length; i++){
 	loadTableData(data[i]);
 }
+
+function search(){
+	let input = document.getElementById('searchfor').value
+	input = input.toLowerCase();
+	for(let i = 0; i < data.length; i++) {
+		for(let j = 0; j < data[i].length; j++) {
+			if(data[i][j].innerHTML().toLowerCase().includes(input))
+				data[i][j].style.display="list-item";
+			else
+				data[i][j].style.display="none";
+		}
+	}
+}
