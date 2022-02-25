@@ -28,11 +28,16 @@ for(let i = 0; i < data.length; i++){
 function search(){
 	let input = document.getElementById('searchfor');
 	input = input.toLowerCase();
-	let filter = document.getElementById("myTable");
-	let tr = table.getElementsByTagName("tr");
-	var td;
+	
 	
 	for(let i = 0; i < data.length; i++) {
-		
+		for(let j = 0; j < data[i].length; j++) {
+			let target = data[i][j].innerText;
+			target = target.toLowerCase();
+			if(target = input)
+				data[i][j].style.display = "";
+			else
+				data[i][j].style.display = "none";
+		}
 	}
 }
