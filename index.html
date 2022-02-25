@@ -21,13 +21,13 @@
             <!--Add remaining options-->
         </select>
         <lable for="searchfor">Search for </lable>
-        <input id="searchfor" onkeyup="search()" type="text" />
+        <input id="searchfor" type="text" />
         <select name="scope" id="search-scope">
             <option value="exact">Matches Exactly</option>
             <option value="contains">Contains</option>
             <option value="not-conains">Does Not Contain</option>
         </select>
-    <input type="submit" id="submit-search" />
+    <input type="submit" id="submit-search" onclick="search()" />
     </form>
   <table id="myTable">
       <thead>
