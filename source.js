@@ -42,7 +42,7 @@ function arrToReigon(data){
 		total: data[4],
 		school: data[5],
 		poverty: data[6],
-		percent: Math.round(data[6] / data[5] * 100) + "%",
+		percent: Math.round(data[6] / data[5] * 10000)/100 + "%",
 	};
 	return reigon;
 }
