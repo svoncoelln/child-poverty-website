@@ -9,23 +9,6 @@ function loadDoc() {
   xhttp.send();
 }
 
-const linesArray = loadDoc().split("\n");
-const objArray = [];
-for (let i = 0; i < linesArray.length; i++) {
-  const current = linesArray[i].split(",");
-  const myObj = {
-    state: current[0],
-    FIPS: current[1],
-    id: current[2],
-    name: current[3],
-    population: current[4],
-    children: current[5],
-    impoverishedChildren: current[6],
-    percentage: (current[6]/current[5])*100+"%"
-  }
-  objArray.push(myObj);
-}
-
 function loadTableData(list) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
@@ -36,10 +19,29 @@ function loadTableData(list) {
 	}
 }
 
-for (let i = 0; i < objArray.length; i++) {
-  function reigonToArr(r) {
-	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
-  loadTableData(arr);
+function reigonToArr(r) {
+  let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
+}
+
+function onload() {
+  this.responseText.split("\n");
+  const objArray = [];
+  for (let i = 0; i < linesArray.length; i++) {
+    const current = linesArray[i].split(",");
+    const myObj = {
+      state: current[0],
+      FIPS: current[1],
+      id: current[2],
+      name: current[3],
+      population: current[4],
+      children: current[5],
+      impoverishedChildren: current[6],
+      percentage: (current[6]/current[5])*100+"%"
+    }
+    objArray.push(myObj);
+  }
+  for (let i = 0; i < objArray.length; i++) {
+    loadTableData(reigonToArr(i));
   }
 }
 
