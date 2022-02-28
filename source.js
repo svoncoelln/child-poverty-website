@@ -10,7 +10,7 @@ function loadDoc() {
 }
 
 const linesArray = loadDoc().split("\n");
-const objArray;
+const objArray = [];
 for (let i = 0; i < linesArray.length; i++) {
   const current = linesArray[i].split(",");
   const myObj = {
@@ -36,7 +36,12 @@ function loadTableData(list) {
 	}
 }
 
-loadTableData(objArray);
+for (let i = 0; i < objArray.length; i++) {
+  function reigonToArr(r) {
+	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
+  loadTableData(arr);
+  }
+}
 
 // let l = ["AL", "01", "00190", "Alabaster City School District", "35,268", "6,797", "669", "9.84%"];
 // let l2 = ["AL","1","5","Albertville City School District","22120","4163","918"];
