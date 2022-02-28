@@ -1,4 +1,5 @@
 let size = 0;
+let counter = 0;
 function loadTableData(reigon) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
@@ -72,5 +73,38 @@ let data = [
 
 for(let i = 0; i < data.length; i++){
 	data[i] = arrToReigon(data[i]);
-	loadTableData(data[i]);
+}
+
+loadNext();
+
+function loadNext() {
+	del();
+	for(let i = counter; i < counter+10; i++) {
+		if(i < 0 || i > data.length) {
+			i = 0;
+			counter = 0;
+		}
+		loadTableData(data[i]);
+	}
+	counter+=10;
+	if(counter < 0 || counter > data.length)
+		counter = 0;
+}
+
+function loadPrevious() {
+	del();
+	if(counter-10 < 0 || counter-10 > data.length) {
+			i = 0;
+			counter = 10;
+		}
+	for(let i = counter-10; i < counter; i++) {
+		if(i < 0 || i > data.length) {
+			i = 0;
+			counter = 10;
+		}
+		loadTableData(data[i]);
+	}
+	counter-=10;
+	if(counter < 0 || counter > data.length)
+		counter = 0;
 }
