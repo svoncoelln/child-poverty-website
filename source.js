@@ -10,7 +10,7 @@ function loadTableData(reigon) {
 	}
 }
 
-function delete(){
+function del(){
 	let table = document.getElementById("table-body");
 	for (let i = 0; i<size; i++)
 	{
