@@ -1,3 +1,4 @@
+let size = 0;
 function loadTableData(reigon) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
@@ -5,6 +6,7 @@ function loadTableData(reigon) {
 	let list = reigonToArr(reigon);
 	
 	for(let i = 0; i < list.length; i++){
+		size += 1;
 		let x = row.insertCell(i);
 		x.innerHTML = list[i];
 	}
@@ -12,9 +14,9 @@ function loadTableData(reigon) {
 
 function del(){
 	let table = document.getElementById("table-body");
-	for (let i = 0; i<size; i++)
-	{
+	for (let i = 0; i < size; i++){
 		table.deleteRow(0);
+		size -= 1;
 	}
 }
 
@@ -40,7 +42,8 @@ function clearTable(){
 	$("#table-bodyid").empty();
 }
 
-function search() {
+function search(){
+	del();
 	let input = document.getElementById('searchfor');
 	input = input.toLowerCase();
 	
