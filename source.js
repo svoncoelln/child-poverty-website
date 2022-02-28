@@ -28,8 +28,22 @@ function arrToReigon(data){
 	return reigon;
 }
 
+function clearTable(){
+	$("#table-bodyid").empty();
+}
+
 function search(){
-	document.body.style.backgroundColor = "red";
+	let input = document.getElementById('searchfor');
+	input = input.toLowerCase();
+	
+	for(let i = 0; i < data.length; i++) {
+		let reigon = data[i];
+		let target = data[i].name;
+		target = target.toLowerCase();
+		if(target == input){
+			loadTableData(data[i]);
+		}
+	}
 }
 
 let data = [
