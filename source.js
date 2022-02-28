@@ -10,6 +10,14 @@ function loadTableData(reigon) {
 	}
 }
 
+function delete(){
+	let table = document.getElementById("table-body");
+	for (let i = 0; i<size; i++)
+	{
+		table.deleteRow(0);
+	}
+}
+
 function reigonToArr(r){
 	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
 	return arr;
