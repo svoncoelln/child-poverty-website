@@ -10,6 +10,14 @@ function loadTableData(reigon) {
 	}
 }
 
+function del(){
+	let table = document.getElementById("table-body");
+	for (let i = 0; i<size; i++)
+	{
+		table.deleteRow(0);
+	}
+}
+
 function reigonToArr(r){
 	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
 	return arr;
@@ -28,12 +36,22 @@ function arrToReigon(data){
 	return reigon;
 }
 
-function search(){
-	$("#myTable").remove();
-	$("#try").text 
-		("all gone.");
+function clearTable(){
+	$("#table-bodyid").empty();
+}
 
-
+function search() {
+	let input = document.getElementById('searchfor');
+	input = input.toLowerCase();
+	
+	for(let i = 0; i < data.length; i++) {
+		let reigon = data[i];
+		let target = data[i].name;
+		target = target.toLowerCase();
+		if(target == input){
+			loadTableData(data[i]);
+		}
+	}
 }
 
 let data = [
