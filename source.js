@@ -29,7 +29,11 @@ function arrToReigon(data){
 }
 
 function search(){
-	document.body.style.backgroundColor = "red";
+	$("#myTable").remove();
+	$("#try").text 
+		("all gone.");
+
+
 }
 
 let data = [
