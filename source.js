@@ -1,5 +1,11 @@
 let table_size = 0;
 let counter = 0;
+let nn = 10;
+
+function changenn(){
+	var select = document.getElementById('next');
+	nn = select.options[select.selectedIndex].value;
+}
 
 function loadTableData(reigon) {
 	let table = document.getElementById("table-body");
@@ -47,7 +53,6 @@ function search(){
 	input = input.toLowerCase();
 	
 	for(let i = 0; i < data.length; i++) {
-		let reigon = data[i];
 		let target = data[i].name;
 		target = target.toLowerCase();
 		if(target == input){
@@ -78,32 +83,34 @@ loadNext();
 
 function loadNext() {
 	del();
-	for(let i = counter; i < counter+10; i++) {
+	changenn();
+	for(let i = counter; i < counter+nn; i++) {
 		if(i < 0 || i > data.length) {
 			i = 0;
 			counter = 0;
 		}
 		loadTableData(data[i]);
 	}
-	counter+=10;
+	counter+=nn;
 	if(counter < 0 || counter > data.length)
 		counter = 0;
 }
 
 function loadPrevious() {
 	del();
-	if(counter-10 < 0 || counter-10 > data.length) {
+	changenn();
+	if(counter-nn < 0 || counter-nn > data.length) {
 		i = 0;
-		counter = 10;
+		counter = nn;
 	}
-	for(let i = counter-10; i < counter; i++) {
+	for(let i = counter-nn; i < counter; i++) {
 		if(i < 0 || i > data.length) {
 			i = 0;
-			counter = 10;
+			counter = nn;
 		}
 		loadTableData(data[i]);
 	}
-	counter-=10;
+	counter-=nn;
 	if(counter < 0 || counter > data.length)
 		counter = 0;
 }
