@@ -53,7 +53,8 @@ function search(){
 		let target = data[i].name;
 		target = target.toLowerCase();
 		if(target == input){
-			loadTableData(data[i]);
+			document.body.style.backgroundColor = "red";
+			//loadTableData(data[i]);
 		}
 	}
 }
@@ -94,9 +95,8 @@ function loadNext() {
 function loadPrevious() {
 	del();
 	if(counter-10 < 0 || counter-10 > data.length) {
-			i = 0;
-			counter = 10;
-		}
+		counter = 10;
+	}
 	for(let i = counter-10; i < counter; i++) {
 		if(i < 0 || i > data.length) {
 			i = 0;
