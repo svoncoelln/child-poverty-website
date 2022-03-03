@@ -1,5 +1,6 @@
-var table_size = 0;
-var counter = 0;
+let table_size = 0;
+let counter = 0;
+
 function loadTableData(reigon) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
@@ -35,13 +36,9 @@ function arrToReigon(data){
 		total: data[4],
 		school: data[5],
 		poverty: data[6],
-		percent: Math.round(data[6] / data[5] * 10000)/100 + "%",
+		percent: Math.round(data[6] / data[5] * 10000)/100 + "%"
 	};
 	return reigon;
-}
-
-function clearTable(){
-	$("#table-bodyid").empty();
 }
 
 function search(){
@@ -96,9 +93,9 @@ function loadNext() {
 function loadPrevious() {
 	del();
 	if(counter-10 < 0 || counter-10 > data.length) {
-			i = 0;
-			counter = 10;
-		}
+		i = 0;
+		counter = 10;
+	}
 	for(let i = counter-10; i < counter; i++) {
 		if(i < 0 || i > data.length) {
 			i = 0;
