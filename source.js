@@ -51,8 +51,7 @@ function search(){
 		let target = data[i].name;
 		target = target.toLowerCase();
 		if(target == input){
-			document.body.style.backgroundColor = "red";
-			//loadTableData(data[i]);
+			loadTableData(data[i]);
 		}
 	}
 }
