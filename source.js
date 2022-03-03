@@ -4,7 +4,7 @@ let nn = 10;
 
 function changenn(){
 	var select = document.getElementById('next');
-	nn = select.options[select.selectedIndex].value;
+	nn = parseInt(select.options[select.selectedIndex].value);
 }
 
 function loadTableData(reigon) {
