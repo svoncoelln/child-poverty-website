@@ -2,6 +2,7 @@ let table_size = 0;
 let counter = 0;
 let nn = 10;
 
+
 function changenn(){
 	var select = document.getElementById('next');
 	nn = parseInt(select.options[select.selectedIndex].value);
@@ -49,17 +50,27 @@ function arrToReigon(data){
 
 function search(){
 	del();
-	let input = document.getElementById('searchfor');
-	input = input.toLowerCase();
+	let input = document.getElementById('searchfor').value;
+	console.log(input);
 	
 	for(let i = 0; i < data.length; i++) {
 		let target = data[i].name;
-		target = target.toLowerCase();
 		if(target == input){
 			loadTableData(data[i]);
 		}
 	}
 }
+/*
+function search(input){
+	del();
+	for(let i = 0; i < data.length; i++) {
+		let target = data[i].name;
+		if(target == input){
+			loadTableData(data[i]);
+		}
+	}
+}
+*/
 
 var data = [
 	["AL", "01", "00190", "Alabaster City School District", "35268", "6797", "669"],
@@ -114,3 +125,4 @@ function loadPrevious() {
 	if(counter < 0 || counter > data.length)
 		counter = 0;
 }
+//search("Alabaster City School District");
