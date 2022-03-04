@@ -5,7 +5,6 @@ function loadDoc() {
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
       read(this.responseText);
-      console.log("loaddoc");
     }
   };
   xhttp.open("GET", "data.txt", true);
@@ -19,12 +18,11 @@ function loadTableData(list) {
 	for(let i = 0; i < list.length; i++){
 		let x = row.insertCell(i);
 		x.innerHTML = list[i];
-    console.log(x);
 	}
 }
 
 function reigonToArr(r) {
-  let arr = [r.state, r.FIPS, r.id, r.name, r.population, r.children, r.current, r.percentage];
+  let arr = [r.state, r.FIPS, r.id, r.name, r.population, r.children, r.impoverishedChildren, r.percentage];
   return arr;
 }
 
