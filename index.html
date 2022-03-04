@@ -12,7 +12,7 @@
         <p> <em> Brought to you by the US Census Bureau </em></p>
     </div>
     
-    <form id="search" onSubmit="myFunction()">
+    <form id="search">
         <lable for="search-column">In Column:</lable>
         <select name="column" id="search-column">
             <option value="state">State</option>
@@ -27,7 +27,7 @@
             <option value="contains">Contains</option>
             <option value="not-conains">Does Not Contain</option>
         </select>
-    <input type="submit" id="submit-search" onclick="search()"/>
+	<input type="button" onclick="search()" value="Submit"/>
     </form>
   <table id="myTable">
       <thead>
@@ -53,9 +53,6 @@
 	</select>
   <button onclick="loadNext()">Next Page</button>
   <button onclick="loadPrevious()">Back</button>
-
   <script src="source.js"></script>
-    
 </body>
-    <script src="source.js"></script>
 </html>
