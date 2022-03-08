@@ -50,9 +50,9 @@ function arrToReigon(data){
 function search(){
 	del();
 	var select = document.getElementById('search-column');
-	let column = select.options[select.selectedIndex].value);
+	let column = select.options[select.selectedIndex].value;
 	select = document.getElementById('search-scope');
-	let scope = select.options[select.selectedIndex].value);
+	let scope = select.options[select.selectedIndex].value;
 	let input = document.getElementById('searchfor').value;
 	console.log(input);
 	
