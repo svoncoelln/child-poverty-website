@@ -70,7 +70,22 @@ function search(){
 		else if(column == 'dist-id'){
 			reigon = data[i].id;
 		}
-		
+		else if(column == 'name'){
+			region = data[i].name;
+		}
+		else if(column == 'total'){
+			region = data[i].total;
+		}
+		else if(column == 'school'){
+			region = data[i].school;
+		}
+		else if(column == 'poverty'){
+			region = data[i].poverty;
+		}
+		else if(column == 'percent'){
+			region = data[i].percent;
+		}
+
 		if(scope == 'exact'){
 			if(reigon == target){
 				loadTableData(data[i]);
