@@ -12,13 +12,12 @@ function loadDoc() {
 }
 
 function loadTableData(list) {
-	let table = document.getElementById("table-body");
-	let row = table.insertRow();
-	  
-	for(let i = 0; i < list.length; i++){
-		let x = row.insertCell(i);
-		x.innerHTML = list[i];
-	}
+  let tableString = "";
+  for(let i = 1; i < list.length; i++) {
+    tableString += `<tr><td>${list[i].state}</td><td>${list[i].FIPS}</td><td>${list[i].id}</td><td>${list[i].name}</td><td>${list[i].population}</td><td>${list[i].children}</td><td>${list[i].impoverishedChildren}</td><td>${list[i].percentage}</td></tr>`;
+  }
+
+  document.getElementById("tableBody").innerHTML = tableString;
 }
 
 function reigonToArr(r) {
@@ -43,7 +42,5 @@ function read(text) {
     }
     objArray.push(myObj);
   }
-  for (let i = 1; i < objArray.length; i++) {
-    loadTableData(reigonToArr(objArray[i]));
-  }
+  loadTableData(objArray);
 }
