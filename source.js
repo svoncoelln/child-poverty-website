@@ -2,7 +2,6 @@ let table_size = 0;
 let counter = 0;
 let nn = 10;
 
-
 function changenn(){
 	var select = document.getElementById('next');
 	nn = parseInt(select.options[select.selectedIndex].value);
@@ -50,27 +49,42 @@ function arrToReigon(data){
 
 function search(){
 	del();
+	var select = document.getElementById('search-column');
+	let column = select.options[select.selectedIndex].value);
+	select = document.getElementById('search-scope');
+	let scope = select.options[select.selectedIndex].value);
 	let input = document.getElementById('searchfor').value;
 	console.log(input);
 	
 	for(let i = 0; i < data.length; i++) {
-		let target = data[i].name;
-		if(target == input){
-			loadTableData(data[i]);
+		let target = "";
+		if(column == 'State'){
+			target = data[i].state;
+		}
+		else if(column == 'State FIPS Code'){
+			target = data[i].fips;
+		}
+		else if(column == 'District ID'){
+			target = data[i].id;
+		}
+		
+		if(scope == 'Matches Exactly'){
+			if(target == input){
+				loadTableData(data[i]);
+			}
+		}
+		else if(scope == 'Contains'){
+			if(input.includes(target)){
+				loadTableData(data[i]);
+			}
+		}
+		else if(scope == 'Does Not Contain'){
+			if(!input.includes(target)){
+				loadTableData(data[i]);
+			}
 		}
 	}
 }
-/*
-function search(input){
-	del();
-	for(let i = 0; i < data.length; i++) {
-		let target = data[i].name;
-		if(target == input){
-			loadTableData(data[i]);
-		}
-	}
-}
-*/
 
 var data = [
 	["AL", "01", "00190", "Alabaster City School District", "35268", "6797", "669"],
@@ -125,4 +139,3 @@ function loadPrevious() {
 	if(counter < 0 || counter > data.length)
 		counter = 0;
 }
-//search("Alabaster City School District");
