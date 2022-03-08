@@ -49,37 +49,40 @@ function arrToReigon(data){
 
 function search(){
 	del();
-	var select = document.getElementById('search-column');
-	let column = select.options[select.selectedIndex].value;
-	select = document.getElementById('search-scope');
-	let scope = select.options[select.selectedIndex].value;
-	let input = document.getElementById('searchfor').value;
-	console.log(input);
+	let selcolumn = document.getElementById('search-column');
+	let column = selcolumn.options[selcolumn.selectedIndex].value;
+	let selscope = document.getElementById('search-scope');
+	let scope = selscope.options[selscope.selectedIndex].value;
+	let target = document.getElementById('searchfor').value;
+	
+	
+	console.log(column);
+	console.log(scope);
 	
 	for(let i = 0; i < data.length; i++) {
-		let target = "";
-		if(column == 'State'){
-			target = data[i].state;
+		let reigon = "";
+		if(column == 'state'){
+			reigon = data[i].state;
 		}
-		else if(column == 'State FIPS Code'){
-			target = data[i].fips;
+		else if(column == 'fips'){
+			reigon = data[i].fips;
 		}
-		else if(column == 'District ID'){
-			target = data[i].id;
+		else if(column == 'dist-id'){
+			reigon = data[i].id;
 		}
 		
-		if(scope == 'Matches Exactly'){
-			if(target == input){
+		if(scope == 'exact'){
+			if(reigon == target){
 				loadTableData(data[i]);
 			}
 		}
-		else if(scope == 'Contains'){
-			if(input.includes(target)){
+		else if(scope == 'contains'){
+			if(reigon.includes(target)){
 				loadTableData(data[i]);
 			}
 		}
-		else if(scope == 'Does Not Contain'){
-			if(!input.includes(target)){
+		else if(scope == 'not-contains'){
+			if(!reigon.includes(target)){
 				loadTableData(data[i]);
 			}
 		}
