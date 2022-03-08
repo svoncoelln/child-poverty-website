@@ -20,11 +20,6 @@ function loadTableData(list) {
   document.getElementById("tableBody").innerHTML = tableString;
 }
 
-function reigonToArr(r) {
-  let arr = [r.state, r.FIPS, r.id, r.name, r.population, r.children, r.impoverishedChildren, r.percentage];
-  return arr;
-}
-
 function read(text) {
   let linesArray = text.split("\n");
   const objArray = [];
