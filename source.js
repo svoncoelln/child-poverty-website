@@ -57,10 +57,6 @@ function search(){
 	
 	let target = (document.getElementById('searchfor').value).toString();
 	
-	console.log(target);
-	console.log(column);
-	console.log(scope);
-	
 	for(let i = 0; i < data.length; i++) {
 		let region = "";
 		if(column == 'state'){
@@ -88,9 +84,6 @@ function search(){
 		else if(column == 'percent'){
 			region = data[i].percent;
 		}
-		
-		region = region.toString();
-		console.log(region);
 
 		if(scope == 'exact'){
 			if(region == target){
