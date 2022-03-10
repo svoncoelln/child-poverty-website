@@ -7,11 +7,11 @@ function changenn(){
 	nn = parseInt(select.options[select.selectedIndex].value);
 }
 
-function loadTableData(reigon) {
+function loadTableData(region) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
 	
-	let list = reigonToArr(reigon);
+	let list = regionToArr(region);
 	
 	for(let i = 0; i < list.length; i++){
 		table_size += 1;
@@ -28,13 +28,13 @@ function del(){
 	table_size = 0;
 }
 
-function reigonToArr(r){
+function regionToArr(r){
 	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
 	return arr;
 }
 
-function arrToReigon(data){
-	let reigon = {
+function arrToregion(data){
+	let region = {
 		state: data[0],
 		fips: data[1],
 		id: data[2],
@@ -44,7 +44,7 @@ function arrToReigon(data){
 		poverty: data[6],
 		percent: Math.round(data[6] / data[5] * 10000)/100 + "%"
 	};
-	return reigon;
+	return region;
 }
 
 function search(){
@@ -60,15 +60,15 @@ function search(){
 	console.log(scope);
 	
 	for(let i = 0; i < data.length; i++) {
-		let reigon = "";
+		let region = "";
 		if(column == 'state'){
-			reigon = data[i].state;
+			region = data[i].state;
 		}
 		else if(column == 'fips'){
-			reigon = data[i].fips;
+			region = data[i].fips;
 		}
 		else if(column == 'dist-id'){
-			reigon = data[i].id;
+			region = data[i].id;
 		}
 		else if(column == 'name'){
 			region = data[i].name;
@@ -87,17 +87,17 @@ function search(){
 		}
 
 		if(scope == 'exact'){
-			if(reigon == target){
+			if(region == target){
 				loadTableData(data[i]);
 			}
 		}
 		else if(scope == 'contains'){
-			if(reigon.includes(target)){
+			if(region.includes(target)){
 				loadTableData(data[i]);
 			}
 		}
 		else if(scope == 'not-contains'){
-			if(!reigon.includes(target)){
+			if(!region.includes(target)){
 				loadTableData(data[i]);
 			}
 		}
@@ -119,7 +119,7 @@ var data = [
 ];
 
 for(let i = 0; i < data.length; i++){
-	data[i] = arrToReigon(data[i]);
+	data[i] = arrToregion(data[i]);
 }
 
 loadNext();
