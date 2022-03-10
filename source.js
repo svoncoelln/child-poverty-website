@@ -51,11 +51,13 @@ function search(){
 	del();
 	let selcolumn = document.getElementById('search-column');
 	let column = selcolumn.options[selcolumn.selectedIndex].value;
+	
 	let selscope = document.getElementById('search-scope');
 	let scope = selscope.options[selscope.selectedIndex].value;
-	let target = document.getElementById('searchfor').value;
 	
+	let target = (document.getElementById('searchfor').value).toString();
 	
+	console.log(target);
 	console.log(column);
 	console.log(scope);
 	
@@ -85,6 +87,9 @@ function search(){
 		else if(column == 'percent'){
 			region = data[i].percent;
 		}
+		
+		console.log(reigon);
+		reigon = reigon.toString();
 
 		if(scope == 'exact'){
 			if(reigon == target){
