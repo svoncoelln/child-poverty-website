@@ -1,13 +1,55 @@
 let table_size = 0;
 let counter = 0;
 let nn = 10;
+loadDoc();
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      read(this.responseText);
+    }
+  };
+  xhttp.open("GET", "list.txt", true);
+  xhttp.send();
+}
+
+
+function loadTablelist(list) {
+  let tableString = "";
+  for(let i = 1; i < list.length; i++) {
+    tableString += `<tr><td>${list[i].state}</td><td>${list[i].FIPS}</td><td>${list[i].id}</td><td>${list[i].name}</td><td>${list[i].population}</td><td>${list[i].children}</td><td>${list[i].impoverishedChildren}</td><td>${list[i].percentage}</td></tr>`;
+  }
+
+  document.getElementById("tableBody").innerHTML = tableString;
+}
+
+function read(text) {
+  let linesArray = text.split("\n");
+  const objArray = [];
+  for (let i = 0; i < linesArray.length; i++) {
+    const current = linesArray[i].split(",");
+    const myObj = {
+      state: current[0],
+      FIPS: current[1],
+      id: current[2],
+      name: current[3],
+      population: current[4],
+      children: current[5],
+      impoverishedChildren: current[6],
+      percentage: (current[6]/current[5])*100+"%"
+    }
+    objArray.push(myObj);
+  }
+  loadTablelist(objArray);
+}
 
 function changenn(){
 	var select = document.getElementById('next');
 	nn = parseInt(select.options[select.selectedIndex].value);
 }
 
-function loadTableData(region) {
+function loadTablelist(region) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
 	
@@ -29,20 +71,20 @@ function del(){
 }
 
 function regionToArr(r){
-	let arr = [r.state, r.fips, r.id, r.name, r.total, r.school, r.poverty, r.percent];
+	let arr = [r.state, r.FIPS, r.id, r.name, r.population, r.children, r.impoverishedchildren, r.percentage];
 	return arr;
 }
 
-function arrToregion(data){
+function arrToregion(list){
 	let region = {
-		state: data[0],
-		fips: data[1],
-		id: data[2],
-		name: data[3],
-		total: data[4],
-		school: data[5],
-		poverty: data[6],
-		percent: Math.round(data[6] / data[5] * 10000)/100 + "%"
+		state: list[0],
+		FIPS: list[1],
+		id: list[2],
+		name: list[3],
+		population: list[4],
+		children: list[5],
+		impoverishedchildren: list[6],
+		percentage: Math.round(list[6] / list[5] * 10000)/100 + "%"
 	};
 	return region;
 }
@@ -57,68 +99,54 @@ function search(){
 	
 	let target = (document.getElementById('searchfor').value).toString();
 	
-	for(let i = 0; i < data.length; i++) {
+	for(let i = 0; i < list.length; i++) {
 		let region = "";
 		if(column == 'state'){
-			region = data[i].state;
+			region = list[i].state;
 		}
-		else if(column == 'fips'){
-			region = data[i].fips;
+		else if(column == 'FIPS'){
+			region = list[i].FIPS;
 		}
 		else if(column == 'dist-id'){
-			region = data[i].id;
+			region = list[i].id;
 		}
 		else if(column == 'name'){
-			region = data[i].name;
+			region = list[i].name;
 			console.log(region);
 		}
-		else if(column == 'total'){
-			region = data[i].total;
+		else if(column == 'population'){
+			region = list[i].population;
 		}
-		else if(column == 'school'){
-			region = data[i].school;
+		else if(column == 'children'){
+			region = list[i].children;
 		}
-		else if(column == 'poverty'){
-			region = data[i].poverty;
+		else if(column == 'impoverishedchildren'){
+			region = list[i].impoverishedchildren;
 		}
-		else if(column == 'percent'){
-			region = data[i].percent;
+		else if(column == 'percentage'){
+			region = list[i].percentage;
 		}
 
 		if(scope == 'exact'){
 			if(region == target){
-				loadTableData(data[i]);
+				loadTablelist(list[i]);
 			}
 		}
 		else if(scope == 'contains'){
 			if(region.includes(target)){
-				loadTableData(data[i]);
+				loadTablelist(list[i]);
 			}
 		}
 		else if(scope == 'not-contains'){
 			if(!region.includes(target)){
-				loadTableData(data[i]);
+				loadTablelist(list[i]);
 			}
 		}
 	}
 }
 
-var data = [
-	["AL", "01", "00190", "Alabaster City School District", "35268", "6797", "669"],
-	["AL","1","5","Albertville City School District","22120","4163","918"],
-	["AL","1","30","Alexander City City School District","16819","2579","700"],
-	["AL","1","60","Andalusia City School District","8818","1471","346"],
-	["AL","1","90","Anniston City School District","22017","3053","735"],
-	["AL","1","100","Arab City School District","8442","1537","218"],
-	["AL","1","120","Athens City School District","27028","4124","585"],
-	["AL","1","180","Attalla City School District","6006","942","226"],
-	["AL","1","210","Auburn City School District","63511","7514","655"],
-	["AL","1","240","Autauga County School District","56145","9647","1378"],
-	["AL","1","270","Baldwin County School District","215609","34620","4002"]
-];
-
-for(let i = 0; i < data.length; i++){
-	data[i] = arrToregion(data[i]);
+for(let i = 0; i < list.length; i++){
+	list[i] = arrToregion(list[i]);
 }
 
 loadNext();
@@ -127,32 +155,32 @@ function loadNext() {
 	del();
 	changenn();
 	for(let i = counter; i < counter+nn; i++) {
-		if(i < 0 || i > data.length) {
+		if(i < 0 || i > list.length) {
 			i = 0;
 			counter = 0;
 		}
-		loadTableData(data[i]);
+		loadTablelist(list[i]);
 	}
 	counter+=nn;
-	if(counter < 0 || counter > data.length)
+	if(counter < 0 || counter > list.length)
 		counter = 0;
 }
 
 function loadPrevious() {
 	del();
 	changenn();
-	if(counter-nn < 0 || counter-nn > data.length) {
+	if(counter-nn < 0 || counter-nn > list.length) {
 		i = 0;
 		counter = nn;
 	}
 	for(let i = counter-nn; i < counter; i++) {
-		if(i < 0 || i > data.length) {
+		if(i < 0 || i > list.length) {
 			i = 0;
 			counter = nn;
 		}
-		loadTableData(data[i]);
+		loadTablelist(list[i]);
 	}
 	counter-=nn;
-	if(counter < 0 || counter > data.length)
+	if(counter < 0 || counter > list.length)
 		counter = 0;
 }
