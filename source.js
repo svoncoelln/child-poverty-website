@@ -51,11 +51,13 @@ function search(){
 	del();
 	let selcolumn = document.getElementById('search-column');
 	let column = selcolumn.options[selcolumn.selectedIndex].value;
+	
 	let selscope = document.getElementById('search-scope');
 	let scope = selscope.options[selscope.selectedIndex].value;
-	let target = document.getElementById('searchfor').value;
 	
+	let target = (document.getElementById('searchfor').value).toString();
 	
+	console.log(target);
 	console.log(column);
 	console.log(scope);
 	
@@ -72,6 +74,7 @@ function search(){
 		}
 		else if(column == 'name'){
 			region = data[i].name;
+			console.log(region);
 		}
 		else if(column == 'total'){
 			region = data[i].total;
@@ -85,6 +88,9 @@ function search(){
 		else if(column == 'percent'){
 			region = data[i].percent;
 		}
+		
+		region = region.toString();
+		console.log(region);
 
 		if(scope == 'exact'){
 			if(region == target){
