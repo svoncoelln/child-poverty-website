@@ -1,5 +1,7 @@
 loadDoc();
 
+const objArray = [];
+
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
@@ -22,7 +24,6 @@ function loadTableData(list) {
 
 function read(text) {
   let linesArray = text.split("\n");
-  const objArray = [];
   for (let i = 0; i < linesArray.length; i++) {
     const current = linesArray[i].split(",");
     const myObj = {
