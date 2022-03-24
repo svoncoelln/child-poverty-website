@@ -144,6 +144,7 @@ function search(){
 		}
 	}
 }
+//to sort take first part of search as findcolumn then convert the column to an array?
 
 for(let i = 0; i < list.length; i++){
 	list[i] = arrToregion(list[i]);
