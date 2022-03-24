@@ -40,3 +40,7 @@ function read(text) {
   }
   loadTableData(objArray);
 }
+
+function sortTable() {
+  objArray.sort((a, b) => (a.percentage > b.percentage) ? 1 : -1)
+}
