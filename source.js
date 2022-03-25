@@ -41,7 +41,33 @@ function read(text) {
   loadTableData(objArray);
 }
 
-function sortTable() {
-  const sortedArr = objArray.sort((a, b) => (a.percentage > b.percentage) ? 1 : -1);
+function sortTable(col) {
+  sortedArr = []
+  switch(col) {
+    case 'state':
+      sortedArr = objArray.sort((a, b) => (a.state > b.state) ? 1 : -1);
+      break;
+    case 'FIPS':
+      sortedArr = objArray.sort((a, b) => (a.FIPS > b.FIPS) ? 1 : -1);
+      break;
+    case 'id':
+      sortedArr = objArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
+      break;
+    case 'name':
+      sortedArr = objArray.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      break;
+    case 'population':
+      sortedArr = objArray.sort((a, b) => (a.population > b.population) ? 1 : -1);
+      break;
+    case 'children':
+      sortedArr = objArray.sort((a, b) => (a.children > b.children) ? 1 : -1);
+      break;
+    case 'impoverishedChildren':
+      sortedArr = objArray.sort((a, b) => (a.impoverishedChildren > b.impoverishedChildren) ? 1 : -1);
+      break;
+    case 'percentage':
+      sortedArr = objArray.sort((a, b) => (a.percentage > b.percentage) ? 1 : -1);
+      break;
+  }
   loadTableData(sortedArr);
 }
