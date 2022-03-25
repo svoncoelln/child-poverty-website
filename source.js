@@ -42,5 +42,5 @@ function read(text) {
 }
 
 function sortTable() {
-  objArray.sort((a, b) => (a.percentage > b.percentage) ? 1 : -1)
+  return objArray.sort((a, b) => (a.percentage > b.percentage) ? 1 : -1);
 }
