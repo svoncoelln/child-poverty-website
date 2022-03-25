@@ -29,17 +29,18 @@
         </select>
     <input type="submit" id="submit-search" />
     </form>
+  <button onclick="loadTableData(sortTable())">Click me</button>
   <table id="myTable">
       <thead>
           <tr>
-              <th><a href="javascript:myFunction()">State</a></th>
-              <th>State FIPS Code</th>
-              <th>District ID</th>
-              <th>Name</th>
-              <th>Total Population</th>
-              <th>School-aged population (5-17)</th>
-              <th>School-aged children in poverty</th>
-              <th onclick="loadTableData(sortTable())">Poverty Rate</th>
+              <th id="tableState"><a href="javascript:myFunction()">State</a></th>
+              <th id="tableFIPS">State FIPS Code</th>
+              <th id="tableID">District ID</th>
+              <th id="tableName">Name</th>
+              <th id="tablePopulation"">Total Population</th>
+              <th id="tableChildren">School-aged population (5-17)</th>
+              <th id="tableImpoverishedChildren">School-aged children in poverty</th>
+              <th onclick="sortTable()">Poverty Rate</th>
           </tr>
       </thead>
       <tbody id = "tableBody"></tbody>
