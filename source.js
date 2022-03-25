@@ -24,11 +24,10 @@ function loadTablelist(list) {
   document.getElementById("tableBody").innerHTML = tableString;
 }
 
-const objArray;
+const objArray = [];
 
 function read(text) {
   let linesArray = text.split("\n");
-  objArray = [];
   for (let i = 0; i < linesArray.length; i++) {
     const current = linesArray[i].split(",");
     const myObj = {
@@ -51,11 +50,9 @@ function changenn(){
 	nn = parseInt(select.options[select.selectedIndex].value);
 }
 
-function loadTablelist(region) {
+function loadTablelist(list) {
 	let table = document.getElementById("table-body");
 	let row = table.insertRow();
-	
-	let list = regionToArr(region);
 	
 	for(let i = 0; i < list.length; i++){
 		table_size += 1;
@@ -151,13 +148,17 @@ loadNext();
 function loadNext() {
 	del();
 	changenn();
+	let data = [];
+	let index = 0;
 	for(let i = counter; i < counter+nn; i++) {
 		if(i < 0 || i > objArray.length) {
 			i = 0;
 			counter = 0;
 		}
-		loadTablelist(objArray[i]);
+		data[index] = objArray[i];
+		index += 1;
 	}
+	loadTablelist(data);
 	counter+=nn;
 	if(counter < 0 || counter > objArray.length)
 		counter = 0;
