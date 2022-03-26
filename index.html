@@ -12,22 +12,26 @@
         <p> <em> Brought to you by the US Census Bureau </em></p>
     </div>
     
-    <form id="search" onSubmit="myFunction()">
+    <form id="search">
         <lable for="search-column">In Column:</lable>
         <select name="column" id="search-column">
             <option value="state">State</option>
             <option value="fips">State FIPS Code</option>
             <option value="dist-id">District ID</option>
-            <!--Add remaining options-->
+            <option value="name">Name</option>
+            <option value="total">Total Population</option>
+            <option value="school">School-aged population</option>
+			<option value="poverty">School-aged children in poverty</option>
+			<option value="percent">Poverty Rate</option>
         </select>
         <lable for="searchfor">Search for </lable>
-        <input id="searchfor" onkeyup="search()" type="text" />
+        <input id="searchfor" type="text" />
         <select name="scope" id="search-scope">
             <option value="exact">Matches Exactly</option>
             <option value="contains">Contains</option>
             <option value="not-conains">Does Not Contain</option>
         </select>
-    <input type="submit" id="submit-search" />
+	<input type="button" onclick="search()" value="Submit"/>
     </form>
   <table id="myTable">
       <thead>
@@ -45,10 +49,14 @@
       <tbody id = "table-body">
       </tbody>
   </table>
-
+  <lable for="next">Show next:</lable>
+	<select id="next">
+		<option value=10 selected>10</option>
+		<option value=25>25</option>
+		<option value=50>50</option>
+	</select>
+  <button onclick="loadNext()">Next Page</button>
+  <button onclick="loadPrevious()">Back</button>
   <script src="source.js"></script>
-  <input type = "button" onclick = "populateTable()" value = "Display"> 
-    
 </body>
-    <script src="source.js"></script>
 </html>
